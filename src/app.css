@@ -88,3 +88,13 @@ h1 {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  color: red;
+}

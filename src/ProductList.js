@@ -14,9 +14,11 @@ const ProductList = ({ category }) => {
   return (
     <div>
       {error ? (
-        <div>Sorry, something went wrong: {error}</div>
+        <div className="centering error">
+          Sorry, something went wrong: {error}
+        </div>
       ) : loading ? (
-        <div>Loading...</div>
+        <div className="centering">Loading...</div>
       ) : (
         <ul className="products">
           {items.map((product) => (

@@ -19,9 +19,9 @@ const CategoriesList = ({ setSelectedCategory }) => {
   return (
     <div className="categories">
       {error ? (
-        <div>Sorry, something went wrong</div>
+        <div className="centering error">Sorry, something went wrong</div>
       ) : loading ? (
-        <div>Loading...</div>
+        <div className="centering">Loading...</div>
       ) : (
         data.map((category, index) => (
           <div
