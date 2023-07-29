@@ -1,27 +1,33 @@
-import prodcuts from "./fake-data/all-products";
-const ProdcutList = (props) => {
-  const selectedItems = prodcuts.filter(
-    (prodcut) => prodcut.category === props.category
-  );
-  const items = selectedItems.length !== 0 ? selectedItems : prodcuts;
+import ProductCard from "./ProductCard";
+import useFetch from "./useFetch";
+const ProductList = ({ category }) => {
+  let url = "";
+  if (category !== "") {
+    url = `https://fakestoreapi.com/products/category/${category}`;
+  } else {
+    url = "https://fakestoreapi.com/products";
+  }
+  const { data, loading, error } = useFetch(url);
+  const selectedItems = data.filter((prodcut) => prodcut.category === category);
+  const items = selectedItems.length !== 0 ? selectedItems : data;
+
   return (
-    <div className="prodcut-container">
-      {items.map((prodcut) => (
+    <div>
+      {error ? (
+        <div>Sorry, something went wrong: {error}</div>
+      ) : loading ? (
+        <div>Loading...</div>
+      ) : (
         <ul className="products">
-          <li key={prodcut.id} className="products-item">
-            <div className="product">
-              <img
-                className="product-image"
-                src={prodcut.image}
-                alt="prodcut cover"
-              />
-              <p className="product-title">{prodcut.title}</p>
-            </div>
-          </li>
+          {items.map((product) => (
+            <li key={product.id} className="products-item">
+              <ProductCard image={product.image} title={product.title} />
+            </li>
+          ))}
         </ul>
-      ))}
+      )}
     </div>
   );
 };
 
-export default ProdcutList;
+export default ProductList;

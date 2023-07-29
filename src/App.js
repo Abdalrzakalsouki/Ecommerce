@@ -1,5 +1,5 @@
 import CategoriesList from "./CategoriesList";
-import ProdcutList from "./ProdcutList";
+import ProductList from "./ProductList";
 import { useState } from "react";
 import "./app.css";
 const App = () => {
@@ -8,7 +8,7 @@ const App = () => {
     <div>
       <h1>Prodcuts</h1>
       <CategoriesList setSelectedCategory={setSelectedCategory} />
-      <ProdcutList category={selectedCategory} />
+      <ProductList category={selectedCategory} />
     </div>
   );
 };

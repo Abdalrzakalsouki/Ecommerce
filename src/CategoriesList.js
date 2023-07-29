@@ -1,30 +1,43 @@
-import categories from "./fake-data/all-categories";
 import { useState } from "react";
-const CategoriesList = (props) => {
-  const [active, setActive] = useState(false);
-
-  function onSelect(categorie) {
-    const value = categorie.replace("FAKE: ", "");
-    props.setSelectedCategory(value);
-    setActive(!active);
+import useFetch from "./useFetch";
+const CategoriesList = ({ setSelectedCategory }) => {
+  const [activeIndex, setActiveIndex] = useState(-1);
+  function onSelect(category, index) {
+    if (activeIndex !== index) {
+      const value = category.replace("FAKE: ", "");
+      setSelectedCategory(value);
+      setActiveIndex(index);
+    } else {
+      setSelectedCategory("");
+      setActiveIndex(-1);
+    }
   }
+  const { data, loading, error } = useFetch(
+    "https://fakestoreapi.com/products/categories"
+  );
+
   return (
     <div className="categories">
-      {categories.map((categorie, index) => (
-        <div
-          key={index}
-          onClick={() => onSelect(categorie)}
-          className={
-            active
-              ? "categories-item categories-item-selected"
-              : "categories-item"
-          }
-        >
-          {categorie}
-        </div>
-      ))}
+      {error ? (
+        <div>Sorry, something went wrong</div>
+      ) : loading ? (
+        <div>Loading...</div>
+      ) : (
+        data.map((category, index) => (
+          <div
+            key={index}
+            onClick={() => onSelect(category, index)}
+            className={
+              activeIndex === index
+                ? "categories-item categories-item-selected"
+                : "categories-item"
+            }
+          >
+            {category}
+          </div>
+        ))
+      )}
     </div>
   );
 };
-
 export default CategoriesList;
