@@ -1,5 +1,5 @@
 import ProductCard from "./ProductCard";
-import useFetch from "./useFetch";
+import useFetch from "../utils/useFetch";
 const ProductList = ({ category }) => {
   let url = "";
   if (category !== "") {
@@ -8,9 +8,6 @@ const ProductList = ({ category }) => {
     url = "https://fakestoreapi.com/products";
   }
   const { data, loading, error } = useFetch(url);
-  const selectedItems = data.filter((prodcut) => prodcut.category === category);
-  const items = selectedItems.length !== 0 ? selectedItems : data;
-
   return (
     <div>
       {error ? (
@@ -21,9 +18,13 @@ const ProductList = ({ category }) => {
         <div className="centering">Loading...</div>
       ) : (
         <ul className="products">
-          {items.map((product) => (
+          {data.map((product) => (
             <li key={product.id} className="products-item">
-              <ProductCard image={product.image} title={product.title} />
+              <ProductCard
+                prodcutId={product.id}
+                image={product.image}
+                title={product.title}
+              />
             </li>
           ))}
         </ul>

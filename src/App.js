@@ -1,14 +1,31 @@
-import CategoriesList from "./CategoriesList";
-import ProductList from "./ProductList";
-import { useState } from "react";
 import "./app.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import ProdcutDetails from "./pages/ProdcutDetails";
+import FavouriteProducts from "./pages/FavouriteProducts";
+import { FavouriteProvider } from "./utils/FavouriteContext";
 const App = () => {
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const routes = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/product/:id",
+      element: <ProdcutDetails />,
+    },
+    {
+      path: "/favourites",
+      element: <FavouriteProducts />,
+    },
+  ]);
   return (
     <div>
-      <h1>Prodcuts</h1>
-      <CategoriesList setSelectedCategory={setSelectedCategory} />
-      <ProductList category={selectedCategory} />
+      <FavouriteProvider>
+        <RouterProvider router={routes}>
+          <Home />
+        </RouterProvider>
+      </FavouriteProvider>
     </div>
   );
 };

@@ -16,6 +16,7 @@ ol {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  text-align: center;
 }
 
 .categories {
@@ -27,7 +28,7 @@ h1 {
   background-color: #efeff0;
   cursor: pointer;
   font-weight: 700;
-  margin: 2px;
+  margin: 5px;
   padding: 12px;
   margin-bottom: 50px;
 }
@@ -72,6 +73,7 @@ h1 {
   display: flex;
   flex-direction: column;
   height: 100%;
+  cursor: pointer;
 }
 
 .product-image {
@@ -80,6 +82,13 @@ h1 {
   max-height: 300px;
   object-fit: contain;
   width: 100%;
+}
+
+.fav-image {
+  display: block;
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
 }
 
 .product-title {
@@ -97,4 +106,33 @@ h1 {
 
 .error {
   color: red;
+}
+
+.prodcut-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.prodcut-details-image {
+  max-height: 500px;
+}
+
+.prodcut-details-description {
+  text-align: center;
+  width: 80%;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.navbar {
+  text-align: center;
+  padding: 20px;
+}
+
+.navbar-link {
+  margin: 20px;
+  padding-block: 20px;
+  font-size: 18px;
 }

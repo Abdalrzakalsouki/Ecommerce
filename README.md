@@ -17,24 +17,24 @@ Ecommerce built with React.js
 ## Installation
 
 1- Clone the repository:
-git clone https://github.com/Abdalrzakalsouki/UTrack.git
+git clone https://github.com/Abdalrzakalsouki/Ecommerce
 
-2- Navigate to project directory:
-cd React-class43
-
-3- Install dependencies:
+2- Install dependencies:
 npm install
 
-4- Run the project:
-npm run dev
+3- Run the project:
+npm run start
 
 ## url
 
-Live Site URL: ()
+Live Site URL: (https://ecommerce-xi-hazel.vercel.app)
 
 ## Technologies
 
 - Reactjs 18
+- Context API
+- react router dom
+- CSS3
 - HTML5
 
 ## Development
